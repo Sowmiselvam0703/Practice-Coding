@@ -1,0 +1,61 @@
+Question:
+  Write a program to determine the fee amount to be collected from a student.  Refer the table below for fee details. Student Type Student Type denoted as Fee Details   Merit Seat Day Scholar MSDS Tuition fee + Bus fee Merit Seat Hosteller MSH Tuition fee + Hostel fee Management Seat Day Scholar MGSDS 150% of Tuition fee + Bus fee Management Seat Hosteller MGSH 150% of Tuition fee + Hostel fee
+
+Input format:
+  *The first input corresponds to the student type
+  *The second input corresponds to the tuition fee
+  *The third input corresponds to the bus fee
+  *The fourth input corresponds to the hostel fees
+
+Output format:
+  *Print the total fee amount of the corresponding student with 2 decimal places. 
+  *Refer below sample output for formatting
+
+Sample Input:
+  MSH
+  40000
+  12000
+  50000
+
+Sample Output:
+  90000.00
+
+
+Solution:
+
+  import java.util.Scanner;
+  class Main
+  {
+      public static void main(String args[])
+      {
+        Scanner s = new Scanner(System.in);
+        String student_type = s.next();
+        int tution_fee = s.nextInt();
+        int bus_fee = s.nextInt();
+        int hostel_fee = s.nextInt();
+        if(student_type.equals("MSDS"))
+           {
+          float total_fee1 = tution_fee + bus_fee;
+          System.out.println(String.format("%.2f", total_fee1));
+        }
+        else if(student_type.equals("MSH"))
+        {
+          float total_fee2 = tution_fee = hostel_fee;
+          System.out.println(String.format("%.2f", total_fee2));
+        }
+        else if(student_type.equals("MGSDS"))
+        {
+          double total_fee3 = (1.5 * tution_fee) + bus_fee;
+          System.out.println(String.format("%.2f", total_fee3));
+        }
+        else if(student_type.equals("MGSH"))
+        {
+        double total_fee4 = (1.5 * tution_fee)+ hostel_fee;
+          System.out.println(String.format("%.2f", total_fee4));
+        }
+        else
+        {
+          System.out.println("Invalid");
+        }
+    }
+  }
