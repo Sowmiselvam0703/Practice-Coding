@@ -22,25 +22,32 @@ The term 4 in the fibonacci series is 2
 
 
 Solution:
+
 import java.util.Scanner;
-
-public class Main {
-
-    private static int fibonacci(int n) {
-        if (n <= 0) {
+class Main
+{
+    public static void main(String args[])
+    {
+        int n,result;
+        Scanner sc=new Scanner(System.in);
+        n=sc.nextInt();
+        result=fibo(n);
+        System.out.println("The term "+n+" in the fibonacci series is "+result);
+        
+    }
+    static int fibo(int n)
+    {
+        if(n==1)
+        {
             return 0;
-        } else if (n == 1) {
+        }
+        else if(n==2)
+        {
             return 1;
         }
-        
-        return fibonacci(n - 1) + fibonacci(n - 2);
-    }
-
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = scanner.nextInt();
-        
-        int nthTerm = fibonacci(n);
-        System.out.println("The term " + n + " in the fibonacci series is " + nthTerm);
+        else
+        {
+            return (fibo(n-1)+fibo(n-2));
+        }
     }
 }
