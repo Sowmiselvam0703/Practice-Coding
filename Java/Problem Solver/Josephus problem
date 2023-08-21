@@ -1,0 +1,27 @@
+-------------Statement------------
+N people standing in circle always kth person is killed till only one person is left.print the index of the person who survive starting the index with one.
+
+------------Solution----------------
+
+import java.util.*;
+class Main
+{
+  
+     public static int Jos(int n, int k) {
+        if (n == 1) {
+            return 1;
+        } 
+       else {
+            return ((Jos(n-1,k)+k-1)%n)+1;
+        }
+    }
+    //Try out your code here
+  public static void main(String args[])
+  {
+    Scanner sa = new Scanner(System.in);
+    int n = sa.nextInt();
+    int k = sa.nextInt();
+    int b = Jos(n,k);
+    System.out.println(b);
+  }
+}
