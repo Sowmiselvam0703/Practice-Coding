@@ -1,0 +1,68 @@
+Question:
+Write a program to compute the sum of elements in an array using recursion.
+Input Format:
+
+Input consists of n+1 integers.
+
+
+
+Output Format:
+
+Print the maximum elements in an array.
+
+Refer sample input and output for formatting specifications.
+
+
+
+Sample Input :
+
+6
+
+2
+
+5
+
+1
+
+7
+
+4
+
+2
+
+
+
+Sample Output:
+
+Maximum element in the array is 7
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+
+    private static int findMax(int[] arr, int index, int max) {
+        if (index == arr.length) {
+            return max;
+        }
+        
+        if (arr[index] > max) {
+            max = arr[index];
+        }
+        
+        return findMax(arr, index + 1, max);
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        
+        int maxElement = findMax(arr, 0, Integer.MIN_VALUE);
+        System.out.println("Maximum element in the array is " + maxElement);
+    }
+}
