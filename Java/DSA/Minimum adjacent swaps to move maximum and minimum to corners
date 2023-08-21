@@ -1,0 +1,44 @@
+
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print(" ");
+        int n = scanner.nextInt();
+
+        int[] arr = new int[n];
+        System.out.print("");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        int minSwaps = minAdjacentSwaps(arr);
+        System.out.println(" "  + minSwaps);
+    }
+
+    public static int minAdjacentSwaps(int[] arr) {
+        int n = arr.length;
+        int minIndex = 0, maxIndex = 0;
+
+        // Find the index of the minimum and maximum elements
+        for (int i = 0; i < n; i++) {
+            if (arr[i] < arr[minIndex]) {
+                minIndex = i;
+            }
+            if (arr[i] > arr[maxIndex]) {
+                maxIndex = i;
+            }
+        }
+
+        // Calculate the number of swaps required
+        int minSwaps = 0;
+        if (minIndex > maxIndex) {
+            minSwaps = maxIndex + (n - 1 - minIndex);
+        } else {
+            minSwaps = maxIndex + (n - 2 - minIndex);
+        }
+
+        return minSwaps;
+    }
+}
