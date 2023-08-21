@@ -1,0 +1,53 @@
+Question:
+Write a program to determine whether 'n' is a factorial number or not. Factorial of a number is the product of all positive numbers from 1 to 'n'.
+Input format:
+
+The input containing an integer 'n' which denotes the given number.
+
+
+
+Output format:
+
+If the given number is factorial, print "Yes". Otherwise, print "No".
+
+
+
+Sample Input:
+
+6
+
+
+
+Sample Output:
+
+Yes
+
+Solution:
+import java.util.Scanner;
+
+public class Main {
+    public static boolean isFactorialNumber(int n) {
+        int factorial = 1;
+        int i = 1;
+        
+        while (factorial < n) {
+            i++;
+            factorial *= i;
+        }
+        
+        return factorial == n;
+    }
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.close();
+        
+        if (isFactorialNumber(n)) {
+            System.out.println("Yes");
+        } else {
+            System.out.println("No");
+        }
+    }
+}
+
