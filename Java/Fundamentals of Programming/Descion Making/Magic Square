@@ -1,0 +1,101 @@
+Question:
+A magic square is an arrangement of numbers (usually integers) in a square grid, where the numbers in each row, and in each column, and the numbers in the forward and backward main diagonals, all add up to the same number. Write a program to find whether a given matrix is a magic square or not.
+
+
+Input Format:
+
+The input consists of (n*n+1) integers. The first integer corresponds to the number of rows/columns in the matrix. The remaining integers correspond to the elements in the matrix. The elements are read in rowwise order, first row first, then second row and so on. Assume that the maximum value of m and n is 5.
+
+ 
+
+Output Format:
+
+Print "yes" if it is a magic square. Print "no" if it is not a magic square.
+
+ 
+
+Sample Input 1:
+
+2
+
+4 5
+
+5 4
+
+
+
+Sample Output 1:
+
+no
+
+Solution:
+import java.util.Scanner;
+
+public class Main{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[][] matrix = new int[n][n];
+
+        // Read the matrix elements
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+
+        if (isMagicSquare(matrix)) {
+            System.out.println("yes");
+        } else {
+            System.out.println("no");
+        }
+    }
+
+    public static boolean isMagicSquare(int[][] matrix) {
+        int n = matrix.length;
+        int expectedSum = n * (n * n + 1) / 2;
+
+        // Check row sums
+        for (int i = 0; i < n; i++) {
+            int rowSum = 0;
+            for (int j = 0; j < n; j++) {
+                rowSum += matrix[i][j];
+            }
+            if (rowSum != expectedSum) {
+                return false;
+            }
+        }
+
+        // Check column sums
+        for (int j = 0; j < n; j++) {
+            int colSum = 0;
+            for (int i = 0; i < n; i++) {
+                colSum += matrix[i][j];
+            }
+            if (colSum != expectedSum) {
+                return false;
+            }
+        }
+
+        // Check main diagonal sum
+        int mainDiagonalSum = 0;
+        for (int i = 0; i < n; i++) {
+            mainDiagonalSum += matrix[i][i];
+        }
+        if (mainDiagonalSum != expectedSum) {
+            return false;
+        }
+
+        // Check reverse diagonal sum
+        int reverseDiagonalSum = 0;
+        for (int i = 0; i < n; i++) {
+            reverseDiagonalSum += matrix[i][n - i - 1];
+        }
+        if (reverseDiagonalSum != expectedSum) {
+            return false;
+        }
+
+        return true;
+    }
+}
+
