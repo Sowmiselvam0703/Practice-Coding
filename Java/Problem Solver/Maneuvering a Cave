@@ -1,0 +1,31 @@
+////
+Problem Statement:
+////
+
+----Solution----
+import java.util.*;
+class Main
+{
+  
+     public static int way(int cr, int cc, int dr,int dc) {
+        if (cr>dr || cc>dc) {
+            return 0;
+        } 
+       else if(cr==dr||cc==dc){
+            return 1;
+        }
+       	else{
+          return way(cr+1,cc,dr,dc) + way(cr,cc+1,dr,dc);
+        }
+		
+    }
+    //Try out your code here
+  public static void main(String args[])
+  {
+    Scanner sa = new Scanner(System.in);
+    int n = sa.nextInt();
+    int k = sa.nextInt();
+    int b = way(0,0,n-1,k-1);
+    System.out.println(b);
+  }
+}
