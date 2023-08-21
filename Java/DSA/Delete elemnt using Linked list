@@ -1,0 +1,107 @@
+Question:
+
+Write a program to delete an element at the beginning of the linked list. Get the value continuously from the user until the user enters a negative value.
+Input Format:
+
+The input should be numbers (until user enters a negative value)
+
+
+
+Output Format:
+
+The output should be numbers in the list in separate line.
+
+
+
+Sample Input:
+
+1
+
+2
+
+3
+
+4
+
+-1
+
+
+
+Sample Output:
+
+2
+
+3
+
+4
+
+Solution:
+
+import java.util.*;
+class Linkedlist{
+    class Node{
+        int data;
+        Node next;
+   
+    Node(int d){
+        this.data=d;
+        this.next=null;
+    }
+    }
+    Node head=null;
+   
+    public  void insertatend(int data){
+        Node no = new Node(data);
+        if(head==null){
+            head= no;
+        }
+        else{
+            Node temp = head;
+            while(temp.next!=null)
+            {
+                temp = temp.next;
+            }
+            temp.next = no;
+        }
+    }
+ 
+   
+    public void print(){
+        Node temp = head;
+        while(temp!=null){
+            System.out.println(temp.data+" ");
+            temp = temp.next;
+        }
+    }
+  public void deletebeg(){
+    if(head==null){
+      System.out.print("invalid");
+    }
+    else{
+      Node temp=head;
+      head=head.next;
+      temp=null;
+    }
+  }
+ 
+}
+
+public class Main
+{
+public static void main(String[] args) {
+   Scanner sc=new Scanner(System.in);
+   Linkedlist ls = new Linkedlist(); //Linkedlist called
+      int data=0;
+      while(data!=-1){
+       data=sc.nextInt();
+        if(data<0){
+          break;
+        }
+       ls.insertatend(data);
+      }    
+   
+     
+ls.deletebeg();
+      ls.print();
+}
+}
