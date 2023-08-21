@@ -1,0 +1,73 @@
+Question:
+implement stack using linked list.
+Sample Input:
+
+1
+
+2
+
+3
+
+4
+
+-1
+
+
+
+Sample Output:
+
+4 3 2 1
+
+Solution:
+import java.util.Scanner;
+
+class Node {
+    int data;
+    Node next;
+
+    public Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class Stack {
+    Node top;
+
+    public Stack() {
+        this.top = null;
+    }
+
+    public void push(int data) {
+        Node newNode = new Node(data);
+        if (top == null) {
+            top = newNode;
+        } else {
+            newNode.next = top;
+            top = newNode;
+        }
+    }
+
+    public void display() {
+        Node current = top;
+        while (current != null) {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Stack stack = new Stack();
+
+        int data;
+        while ((data = scanner.nextInt()) != -1) {
+            stack.push(data);
+        }
+
+        stack.display();
+    }
+}
