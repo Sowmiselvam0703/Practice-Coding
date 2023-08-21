@@ -1,0 +1,46 @@
+Question:
+Write a program to find the number of digits in a number using recursion.
+
+Input Format:
+Input consists of a non - negative integer.
+
+
+
+Output Format:
+
+Print number of digits of a given number
+
+Refer sample input and output for formatting specifications.
+
+ 
+Sample Input:
+432
+
+
+
+Sample Output:
+
+The number of digits in 432 is 3
+
+Solution:
+
+import java.util.Scanner;
+
+public class Main {
+    public static int countDigitsRecursive(int num) {
+        if (num == 0) {
+            return 0;
+        } else {
+            return 1 + countDigitsRecursive(num / 10);
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int num = scanner.nextInt();
+
+        int numDigits = countDigitsRecursive(num);
+        System.out.println("The number of digits in " + num + " is " + numDigits);
+    }
+}
