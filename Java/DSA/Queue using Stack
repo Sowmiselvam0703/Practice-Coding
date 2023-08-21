@@ -1,0 +1,60 @@
+import java.util.*;
+
+class QueueUsingStacks {
+    private Stack<Integer> inputStack = new Stack<>();
+    private Stack<Integer> outputStack = new Stack<>();
+
+    public void enqueue(int val) {
+        inputStack.push(val);
+    }
+
+    public void dequeue() {
+        if (outputStack.isEmpty()) {
+            while (!inputStack.isEmpty()) {
+                outputStack.push(inputStack.pop());
+            }
+        }
+
+        if (!outputStack.isEmpty()) {
+            outputStack.pop();
+        }
+    }
+
+    public int front() {
+        if (outputStack.isEmpty()) {
+            while (!inputStack.isEmpty()) {
+                outputStack.push(inputStack.pop());
+            }
+        }
+
+        if (!outputStack.isEmpty()) {
+            return outputStack.peek();
+        }
+
+        return -1; // Return a sentinel value for an empty queue
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        QueueUsingStacks q = new QueueUsingStacks();
+
+        System.out.println("Enter the size of stack: ");
+        int size = scanner.nextInt();
+
+        System.out.println("Enter the stack values:");
+        for (int i = 0; i < size; i++) {
+            int val = scanner.nextInt();
+            q.enqueue(val);
+        }
+
+        System.out.println("Queue elements are:");
+        for (int i = 0; i < size; i++) {
+            System.out.print(q.front() + " ");
+            q.dequeue();
+        }
+
+        scanner.close();
+    }
+}
