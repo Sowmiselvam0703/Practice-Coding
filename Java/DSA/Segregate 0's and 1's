@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main {
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Read input
+        int size = scanner.nextInt();
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        
+        // Segregate 0s and 1s
+        segregateZerosOnes(arr);
+        
+        // Print the segregated array
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+        
+        scanner.close();
+    }
+    
+    public static void segregateZerosOnes(int[] arr) {
+        int left = 0;
+        int right = arr.length - 1;
+        
+        while (left < right) {
+            while (arr[left] == 0 && left < right) {
+                left++;
+            }
+            
+            while (arr[right] == 1 && left < right) {
+                right--;
+            }
+            
+            if (left < right) {
+                arr[left] = 0;
+                arr[right] = 1;
+                left++;
+                right--;
+            }
+        }
+    }
+}
